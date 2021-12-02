@@ -49,18 +49,30 @@ class Submarine {
     var aim = 0
 
     fun move(instruction: SubInstruction) {
-        if (instruction.type == "down") {
-            aim += instruction.size
+        when (instruction.type) {
+            "down" -> goDown(instruction.size)
+            "up" -> goUp(instruction.size)
+            "forward" -> goForward(instruction.size)
         }
-        if (instruction.type == "up") {
-            aim -= instruction.size
+    }
+
+    private fun goForward(size: Int) {
+        horizontalPosition += size
+        adjustAim(size)
+    }
+
+    private fun adjustAim(size: Int) {
+        if (aim != 0) {
+            depth += aim * size
         }
-        if (instruction.type == "forward") {
-            horizontalPosition += instruction.size
-            if (aim != 0) {
-                depth += aim * instruction.size
-            }
-        }
+    }
+
+    private fun goUp(size: Int) {
+        aim -= size
+    }
+
+    private fun goDown(size: Int) {
+        aim += size
     }
 }
 
