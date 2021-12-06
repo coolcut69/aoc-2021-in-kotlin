@@ -25,7 +25,7 @@ fun main() {
 
     val input = readInput("Day05")
     check(part1(input) == 7438)
-    println(part2(input))
+    check(part2(input) == 21406)
 }
 
 class Segment(line: List<String>) {
@@ -51,49 +51,33 @@ class Segment(line: List<String>) {
 
     fun diagonalPoints(): List<String> {
         val result: MutableList<String> = ArrayList()
-        if (x1 > x2 && y1 > y2){
-            println("x1 > x2 && y1 > y2")
-            println(this)
-            result.add("8,0")
-            result.add("7,1")
-            result.add("6,2")
-            result.add("5,3")
-            result.add("4,4")
-            result.add("3,5")
-            result.add("2,6")
-            result.add("1,7")
-            result.add("0,8")
+        if (x1 > x2 && y1 > y2) {
+            for (i in 0 ..x1 - x2) {
+                val x = x1 - i
+                val y = y1 - i
+                result.add("$x,$y")
+            }
         }
-        if (x1 > x2 && y1 < y2){
-            println("x1 > x2 && y1 < y2")
-            println(this)
-            result.add("6,4")
-            result.add("5,3")
-            result.add("4,2")
-            result.add("3,1")
-            result.add("2,0")
+        if (x1 > x2 && y1 < y2) {
+            for (i in 0..x1 - x2) {
+                val x = x1 - i
+                val y = y1 + i
+                result.add("$x,$y")
+            }
         }
-        if (x2 > x1 && y2 > y1){
-            println("x2 > x1 && y2 > y1")
-            println(this)
-            result.add("0,0")
-            result.add("1,1")
-            result.add("2,2")
-            result.add("3,3")
-            result.add("4,4")
-            result.add("5,5")
-            result.add("6,6")
-            result.add("7,7")
-            result.add("8,8")
+        if (x2 > x1 && y2 > y1) {
+            for (i in 0 ..x2 - x1) {
+                val x = x1 + i
+                val y = y1 + i
+                result.add("$x,$y")
+            }
         }
-        if (x2 > x1 && y2 < y1){
-            println("x2 > x1 && y2 < y1")
-            println(this)
-            result.add("5,5")
-            result.add("6,4")
-            result.add("7,3")
-            result.add("8,2")
-
+        if (x2 > x1 && y2 < y1) {
+            for (i in 0 ..x2 - x1) {
+                val x = x1 + i
+                val y = y1 - i
+                result.add("$x,$y")
+            }
         }
 
         return result
