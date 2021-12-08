@@ -3,7 +3,7 @@ fun main() {
         var gammaString = ""
         var epsilonString = ""
 
-        for (i in 0 until input[0].length) {
+        for (i   in 0 until input[0].length) {
             val list = input.map { it[i] }
             val mostCommonDigit = list.groupBy { it }
                 .maxByOrNull { it.value.size }
@@ -32,12 +32,8 @@ fun main() {
             }
 
             oxygenList.removeIf { it[i] != mostCommonDigit }
-//            println(mostCommonDigit)
         }
         val oxygen: Int = oxygenList[0].toInt(2)
-//        println(oxygen)
-
-
 
         val co2List = mutableListOf<String>()
         co2List.addAll(input)
@@ -56,9 +52,6 @@ fun main() {
 
         }
         val co2: Int = co2List[0].toInt(2)
-//        println(co2)
-
-
         return oxygen * co2
     }
 
