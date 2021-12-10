@@ -1,5 +1,23 @@
 fun main() {
     fun part1(input: List<String>): Int {
+        for (line in input) {
+            if (line.count { c -> c == '<' } != line.count { c -> c == '>' }) {
+                println("Expected < >")
+                break
+            }
+            if (line.count { c -> c == '[' } != line.count { c -> c == ']' }) {
+                println("Expected [ ]")
+                break
+            }
+            if (line.count { c -> c == '{' } != line.count { c -> c == '}' }) {
+                println("Expected { }")
+                break
+            }
+            if (line.count { c -> c == '(' } != line.count { c -> c == ')' }) {
+                println("Expected ( )")
+                break
+            }
+        }
         return 0
     }
 
@@ -13,7 +31,7 @@ fun main() {
     check(part2(testInput) == 0)
 
     val input = readInput("Day10")
-    println(part1(input))
-    println(part2(input))
+//    println(part1(input))
+//    println(part2(input))
 }
 
