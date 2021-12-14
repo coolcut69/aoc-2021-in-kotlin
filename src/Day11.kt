@@ -1,5 +1,45 @@
 fun main() {
+    fun updateNumbersByOne(input: MutableList<List<Int>>): MutableList<List<Int>> {
+        val numbers = mutableListOf<List<Int>>()
+        for (row in input) {
+            numbers.add(row.map { it +1 })
+        }
+        return numbers
+    }
+
+    fun checkForFlashes(input: MutableList<List<Int>>): MutableList<List<Int>> {
+        val numbers = mutableListOf<List<Int>>()
+        for (row in input) {
+            numbers.add(row.map { it +1 })
+        }
+        return numbers
+
+    }
+
     fun part1(input: List<String>): Int {
+        var numbers = mutableListOf<List<Int>>()
+
+        for ((rowIndex, row) in input.withIndex()) {
+
+            for ((index, value) in row.withIndex()) {
+                println("$value at $rowIndex ,$index")
+            }
+        }
+
+
+        for (row in input) {
+//            Octopus(    )
+
+            numbers.add(row.map { it.digitToInt() })
+        }
+
+        numbers = updateNumbersByOne(numbers)
+        numbers = checkForFlashes(numbers)
+
+
+//        println(numbers)
+
+
         return 0
     }
 
@@ -13,6 +53,8 @@ fun main() {
     check(part2(testInput) == 0)
 
     val input = readInput("Day11")
-    println(part1(input))
-    println(part2(input))
+//    println(part1(input))
+//    println(part2(input))
 }
+
+
